@@ -1,0 +1,31 @@
+.Nav {
+    width: 100%;
+    padding: 16px;
+    border-bottom: solid black;
+    display: flex;
+    justify-content: space-between;
+
+    >._logo-container {
+
+        >._logo {
+            height: 32px;
+        }
+
+    }
+
+    >._lr-container {
+        padding-right: 32px;
+        display: flex;
+        padding-top: 6px;
+       
+
+        >._signInSwitch {
+            cursor: pointer;
+            padding-left: 16px;
+        }
+    }
+}
+
+.none {
+    display: none;
+}
