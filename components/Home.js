@@ -4,7 +4,7 @@ import Nav from './Nav.js'
 import LoginModal from './LoginModal';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import loadFirebase from '../lib/firebase.js'
+
 
 class Home extends PureComponent {
     constructor(props){

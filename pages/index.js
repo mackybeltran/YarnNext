@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Meta from '../components/Meta.js'
 import Home from '../components/Home.js'
-import { loadFirebase } from '../.env/firebase.js'
+import { loadFirebase } from '../firebase/firebase.js'
 
 class Index extends Component {
 

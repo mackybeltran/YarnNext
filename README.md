@@ -6,3 +6,4 @@ Development Mode:
 
 npm run dev
 
+firebase credentials are in .env and not in github
