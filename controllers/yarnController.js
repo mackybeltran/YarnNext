@@ -9,13 +9,15 @@ export const addNewYarn = (user, title, file) => {
         }, (error) => {
             console.log(error)
         },() => {
-            storageRef.getDownloadURL()
+            return storageRef.getDownloadURL()
                 .then(url =>            
                 firebase.firestore().collection('yarns').add({
                     title: title,
                     user: user,
                     cover: url
-        }))
+        })).then(result => {
+            location.assign('/myyarns')
+        })
     })
 }
 

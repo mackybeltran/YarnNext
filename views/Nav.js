@@ -40,9 +40,12 @@ class Nav extends PureComponent {
                         }}>
                         REGISTER
                     </div>
-                    <div className={this.props.isAuthenticated ? '_logout _signInSwitch' : 'none'} onClick={this._handleLogout}>
+                    <a 
+                        className={this.props.isAuthenticated ? '_logout _signInSwitch' : 'none'} 
+                        onClick={this._handleLogout}
+                        href='/'>
                         LOGOUT
-                    </div>   
+                    </a>   
                 </div>
             </div>
     }
