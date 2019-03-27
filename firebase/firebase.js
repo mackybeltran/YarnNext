@@ -13,7 +13,6 @@ export function loadFirebase(){
 }
 
 export function signOut(){
-    console.log('logout fired')
     firebase.auth().signOut();
     return firebase
 }

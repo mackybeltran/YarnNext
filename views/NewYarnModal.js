@@ -26,6 +26,7 @@ class NewYarnModal extends Component {
         const user = this.props.isAuthenticated
 
         addNewYarn(user, title, cover)
+        
     }
 
 

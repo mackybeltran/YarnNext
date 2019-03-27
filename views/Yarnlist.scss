@@ -1,3 +1,41 @@
 .Yarnlist {
     font-family: 'Raleway';
+
+    >._yarn-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 32px;
+        margin-bottom: 32px;
+
+        >._yarn-card {
+            height: 240px;
+            width: 200px;
+            border: solid black;
+            display: flex;
+            flex-direction: column;
+            margin: 32px;
+            background-color: white;
+            align-items: center;
+
+            >._img-container {
+                width: 100%;
+                background-color: black;
+                height: 50%;
+                position: relative;
+
+                >._yarn-cover {
+                    width: 200px;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: contain;
+                    position: absolute;
+                    bottom: 5px;
+                }
+            }
+            >._title-container{
+                padding: 16px;
+                
+            }
+        }
+    }
 }

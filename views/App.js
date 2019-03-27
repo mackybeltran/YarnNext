@@ -15,9 +15,9 @@ class App extends Component {
         loadFirebase()
     }
 
-    componentWillMount(){
+    componentDidMount(){
     
-        this._removeListener = firebase.auth().onAuthStateChanged((user) => {
+        firebase.auth().onAuthStateChanged((user) => {
             user ? this.setState({
                 isAuthenticated: user.uid,
             })
@@ -25,10 +25,6 @@ class App extends Component {
                 isAuthenticated: false
             }); 
         });
-    }
-
-    componentWillUnmount(){
-        this._removeListener();
     }
 
     render(){

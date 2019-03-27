@@ -87,9 +87,11 @@ class Home extends PureComponent {
                         onClick={() => this.newYarnModalChange(true)}>
                         NEW
                     </div>
-                    <div className={this.state.createModeOn ? '_mode' : 'none'}>
+                    <a 
+                        className={this.state.createModeOn ? '_mode' : 'none'}
+                        href='/myyarns'>
                         EXISTING
-                    </div>
+                    </a>
                 </div>
                 <LoginModal 
                     signInMode={this.state.signInMode}

@@ -31,6 +31,7 @@
         >._signInSwitch {
             cursor: pointer;
             padding-left: 16px;
+            text-decoration: none;
         }
 
         >._register {
@@ -38,7 +39,12 @@
         }
 
         >._logout {
-            padding-right: 10px; 
+            padding-right: 10px;
+            color: black;
+        }
+
+        >._logout:hover {
+            color: white;
         }
     }
 }
@@ -46,3 +52,4 @@
 .none {
     display: none;
 }
+

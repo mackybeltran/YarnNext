@@ -3,6 +3,7 @@ import { loadFirebase, getUser } from '../firebase/firebase.js'
 
 import { getUsersYarns } from '../controllers/yarnController'
 import Nav from './Nav.js'
+import './Yarnlist.scss'
 
 class Yarnlist extends Component {
     constructor(props){
@@ -46,13 +47,23 @@ class Yarnlist extends Component {
                 isAuthenticated={this.props.appState.isAuthenticated}
                 loginModalChange={this.loginModalChange}
             />
+            <div className='_yarn-container'>
             {this.state.yarns.map((yarn, index) => {
                   
-                return <div key={index}>
-                      {yarn.data().title}
+                return <div key={index} className='_yarn-card'>
+                    <div className='_img-container'>
+                      <img 
+                        src={yarn.data().cover}
+                        className='_yarn-cover w3-image'
+                        alt={yarn.data().title}/>
                     </div>
+                    <div className='_title-container'>
+                        {yarn.data().title}
+                    </div>
+                </div>
             })}
             </div>
+        </div>
     }
 }
 
