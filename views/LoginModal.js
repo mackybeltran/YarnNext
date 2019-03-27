@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import './LoginModal.scss';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { signIn, register } from '../firebase/firebase.js'
 
 
 class LoginModal extends PureComponent {
@@ -14,7 +15,7 @@ class LoginModal extends PureComponent {
         this.handleSignIn = this.handleSignIn.bind(this);
         this.state = {
             email: '',
-            password: ''
+            pass: ''
         }
     }
 
@@ -22,11 +23,12 @@ class LoginModal extends PureComponent {
         this.setState({
             email: event.target.value
         })
+        console.log(this.state.email)
     }
 
     handleChangePassword(event){
         this.setState({
-            password: event.target.value
+            pass: event.target.value
         })
         
     }
@@ -34,14 +36,15 @@ class LoginModal extends PureComponent {
     handleRegistration(){
         console.log('login fired')
         const email = this.state.email;
-        const pass = this.state.password;
-        firebase.auth().createUserWithEmailAndPassword(email, pass);
+        const pass = this.state.pass;
+        const callback = () => {
+            if (this.props.isAuthenticated) {
+                this.props.loginModalChange(false)
+            }
+        }
+        register(email, pass, callback)
 
-        firebase.auth().onAuthStateChanged(user => {
-            user ? console.log('logged in')
-            : console.log('not logged in')
-
-        })
+       
    
     }
 
@@ -49,18 +52,9 @@ class LoginModal extends PureComponent {
         
         console.log('login fired')
         const email = this.state.email;
-        const pass = this.state.password
-
-        firebase.auth().signInWithEmailAndPassword(email, pass);
-        
-        
-       
-        firebase.auth().onAuthStateChanged((user) => {
-            user ? this.props.loginModalChange(false)
-            : console.log('not logged in')
-        
-        })
-
+        const pass = this.state.pass;
+     
+        signIn(email, pass, this.props.loginModalChange(false))
     }
 
     handleSignIn(event){
@@ -71,21 +65,6 @@ class LoginModal extends PureComponent {
             this.handleRegistration()
         }
         
-    }
-
-    componentWillMount(){
-        this._removeListener = firebase.auth().onAuthStateChanged((user) => {
-            user ? this.setState({
-                isAuthenticated: !!user
-            })
-            : this.setState({
-                isAuthenticated: false
-            }); 
-        });
-    }
-
-    componentWillUnmount(){
-        this._removeListener();
     }
 
     render(){
@@ -102,7 +81,7 @@ class LoginModal extends PureComponent {
                     <input type='password' 
                         className='_input' 
                         onChange={this.handleChangePassword} 
-                        value={this.state.password}
+                        value={this.state.pass}
                         placeholder='password'/>
                     <input type='submit' 
                         className='_input'>

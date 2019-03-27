@@ -1,16 +1,16 @@
 import Meta from '../views/Meta.js'
-import Home from '../views/Home.js'
 import App from '../views/App.js'
 import Footer from '../views/Footer.js'
+import Yarnlist from '../views/Yarnlist.js'
 
-const Index = (props) => {
+const Myyarns = (props) => {
 
 
     return <App>{(appState) => {
         return <div>
             <Meta/>
 
-            <Home appState={appState}/>
+            <Yarnlist appState={appState}/>
             <Footer/>
         </div>
     }}</App>
@@ -18,5 +18,4 @@ const Index = (props) => {
 
 }
 
-export default Index
-
+export default Myyarns

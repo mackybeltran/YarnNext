@@ -1,16 +1,25 @@
+@import './App.scss';
+
 .Nav {
-    width: 100%;
+    width: 100vw;
     padding: 16px;
     border-bottom: solid black;
     display: flex;
     justify-content: space-between;
+    z-index: 99;
+    background-color: $theme-orange;
+    font-family: 'Raleway';
 
     >._logo-container {
 
         >._logo {
             height: 32px;
         }
+        
 
+    }
+    >._logo-container:hover {
+        cursor: pointer
     }
 
     >._lr-container {
@@ -22,6 +31,14 @@
         >._signInSwitch {
             cursor: pointer;
             padding-left: 16px;
+        }
+
+        >._register {
+            padding-right: 10px;
+        }
+
+        >._logout {
+            padding-right: 10px; 
         }
     }
 }

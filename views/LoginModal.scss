@@ -1,3 +1,5 @@
+@import './App.scss';
+
 .LoginModal {
     position: absolute;
     width: 300px;
@@ -5,6 +7,9 @@
     border: solid;
     display: flex;
     flex-direction: column;
+    align-self: center;
+    top: 75px;
+    background-color: $theme-orange;
 
     >._title {
         padding: 16px;

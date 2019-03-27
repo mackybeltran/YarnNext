@@ -1,0 +1,84 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Raleway';
+    background-color: #eb795e;
+    
+    >._main {
+        width: 100%;
+        position: relative;
+        margin-top: 16px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        font-size: 32px;
+
+        >._use-modes {
+            display: flex;
+            padding: 16px;
+            margin: 0 auto;
+            padding-top: 66px;
+
+            >._mode {
+                padding: 32px;
+                white-space: nowrap;
+            }
+
+            >._mode:hover {
+                color: white;
+                cursor: pointer;
+            }
+        }
+        >._create-modes {
+            margin: 0 auto;
+            transform: translate(-32px, -32px);
+
+            >._mode {
+                padding-bottom: 16px;
+            }
+            >._mode:hover {
+                color: white;
+                cursor: pointer;
+            }
+        }
+
+        @media screen and (max-width: 768px){
+            >._create-modes {
+                transform: translate(0,0);
+                padding-left: 100px;
+            }
+        }
+
+    }
+    @media screen and (max-width: 768px){
+        >._main {
+            font-size: 16px;
+        }
+    } 
+}
+
+
+@media screen and (min-width: 768px){
+    .Home {
+        background: url(https://firebasestorage.googleapis.com/v0/b/yarn-3c8e6.appspot.com/o/images%2Fback.jpg?alt=media&token=198e35cc-6376-4250-9aba-8ee81a6e823e);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-bottom: 70%;
+        height: auto;
+        width: 100vw;
+    }
+}
+
+img {
+    height: 32px;
+    transform: translate(0, 4px);
+    padding-right: 10px;
+}
+
+.none {
+    display: none;
+}
+

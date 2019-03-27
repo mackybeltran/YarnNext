@@ -1,0 +1,50 @@
+@import './App.scss';
+
+.NewYarnModal {
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    border: solid;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    top: 75px;
+    background-color: $theme-orange;
+
+    >._close-btn {
+        align-self: flex-end;
+        padding-right: 5px;
+        cursor: pointer
+    }
+    >._close-btn:hover {
+        color: white;
+    }
+
+    >._form {
+        position: absolute;
+        width: 300px;
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+
+        >._form-collection {
+            >._input-title {
+                margin-top: 40px;
+            }
+
+            >._file-title {
+                margin-top: 40px;
+                font-size: 16px;
+            }
+
+            >.input-file {
+                margin-top: 16px;
+            }
+        }      
+    }
+}
+
+.none {
+    display: none;
+}
