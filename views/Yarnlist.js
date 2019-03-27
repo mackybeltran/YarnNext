@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import { loadFirebase, getUser } from '../firebase/firebase.js'
-
-import { getUsersYarns } from '../controllers/yarnController'
+import { getUsersYarns, getAllYarns } from '../controllers/yarnController'
 import Nav from './Nav.js'
 import './Yarnlist.scss'
 
@@ -17,15 +16,26 @@ class Yarnlist extends Component {
         }
     }
     componentDidUpdate(prevProps){    
-        console.log('19', prevProps)
-        if (this.props.appState.isAuthenticated !== prevProps.appState.isAuthenticated) {   
+        
+        if ((this.props.appState.isAuthenticated !== prevProps.appState.isAuthenticated) &&
+        (this.props.allYarns === false)) {   
         getUsersYarns(this.props.appState.isAuthenticated)
         .then(data => {
             this.setState({
                 yarns: data
             })
         })
-    }}
+    }   if ((this.props.appState.isAuthenticated !== prevProps.appState.isAuthenticated) &&
+        (this.props.allYarns === true)) {
+        getAllYarns(this.props.appState.isAuthenticated)
+        .then(data => {
+            this.setState({
+                yarns: data
+            })
+        })
+    }
+        
+}
 
     signInModeChange(mode){
         this.setState({
@@ -40,7 +50,7 @@ class Yarnlist extends Component {
         })
     }
     render(){
-       console.log(this.props.appState.isAuthenticated)
+       console.log(this.props.allYarns)
         return <div className='Yarnlist'>
             <Nav 
                 signInModeChange={this.signInModeChange}
