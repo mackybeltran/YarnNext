@@ -3,7 +3,7 @@ import App from '../views/App.js'
 import Footer from '../views/Footer.js'
 import Yarnlist from '../views/Yarnlist.js'
 
-const Myyarns = (props) => {
+const Allyarns = (props) => {
 
 
     return <App>{(appState) => {
@@ -12,7 +12,7 @@ const Myyarns = (props) => {
 
             <Yarnlist 
                 appState={appState}
-                allYarns={false}/>
+                allYarns={true}/>
             <Footer/>
         </div>
     }}</App>
@@ -20,4 +20,4 @@ const Myyarns = (props) => {
 
 }
 
-export default Myyarns
+export default Allyarns

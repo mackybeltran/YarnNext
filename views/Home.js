@@ -76,10 +76,12 @@ class Home extends PureComponent {
                         <img src={bulb}/>
                         CREATE
                     </div>
-                    <div className='_mode'>
+                    <a 
+                        className='_mode'
+                        href='/allyarns'>
                         <img src={controller}/>
                         PLAY
-                    </div>
+                    </a>
                 </div>
                 <div className={this.props.appState.isAuthenticated ? '_create-modes' : 'none'}>
                     <div 

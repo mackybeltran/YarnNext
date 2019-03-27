@@ -33,3 +33,14 @@ export const getUsersYarns = (user) => {
     
 }
 
+export const getAllYarns = () => {
+    return firebase.firestore().collection('yarns').get()
+        .then((snapshot) => {
+            console.log(snapshot)
+            return snapshot.docs
+            })
+        
+    
+    
+}
+
