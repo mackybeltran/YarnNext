@@ -8,7 +8,7 @@ export function loadFirebase(){
   
     if (!firebase.apps.length) {
       firebase.initializeApp(config);
-      }
+    }
     return firebase.apps
 }
 
@@ -17,27 +17,24 @@ export function signOut(){
     return firebase
 }
 
-export const signIn = (email, pass, callback) => {
-    
+export const signIn = (email, pass, callback) => {    
     return firebase.auth().signInWithEmailAndPassword(email, pass)
-       .then(response => {
-           callback
-        }).catch((error) =>  {
+    .then(response => {
+        callback
+    }).catch((error) =>  {
             console.log(error);
-        });
+    });
 }
 
 export const register = (email, pass, callback) => {
     return firebase.auth().createUserWithEmailAndPassword(email, pass)
-        .then(response => {
-            callback
-        }).catch((error) =>  {
-            console.log(error);
-        });
+    .then(response => {
+        callback
+    }).catch((error) =>  {
+        console.log(error);
+    });
 }
      
 export const getUser = () => {
-   console.log(firebase.auth().currentUser)
-        
-    
+   console.log(firebase.auth().currentUser)    
 }

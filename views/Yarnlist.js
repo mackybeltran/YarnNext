@@ -33,8 +33,7 @@ class Yarnlist extends Component {
                 yarns: data
             })
         })
-    }
-        
+    }       
 }
 
     signInModeChange(mode){

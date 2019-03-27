@@ -1,6 +1,5 @@
 import firebase from 'firebase';
 
-
 export const addNewYarn = (user, title, file) => {
     const storageRef = firebase.storage().ref().child(`/yarnImages/${user}/${title}/${file.name}`)
     storageRef.put(file).on('state_changed',
@@ -21,26 +20,18 @@ export const addNewYarn = (user, title, file) => {
     })
 }
 
-
-
 export const getUsersYarns = (user) => {
     return firebase.firestore().collection('yarns').where('user', '==', user).get()
-        .then((snapshot) => {
-            return snapshot.docs
-            })
-        
-    
-    
+    .then((snapshot) => {
+        return snapshot.docs
+    })    
 }
 
 export const getAllYarns = () => {
     return firebase.firestore().collection('yarns').get()
-        .then((snapshot) => {
-            console.log(snapshot)
-            return snapshot.docs
-            })
-        
-    
-    
+    .then((snapshot) => {
+        console.log(snapshot)
+        return snapshot.docs
+    })
 }
 

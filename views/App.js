@@ -15,8 +15,7 @@ class App extends Component {
         loadFirebase()
     }
 
-    componentDidMount(){
-    
+    componentDidMount(){    
         firebase.auth().onAuthStateChanged((user) => {
             user ? this.setState({
                 isAuthenticated: user.uid,
@@ -29,8 +28,8 @@ class App extends Component {
 
     render(){
         return <div>
-                {this.props.children(this.state)}
-            </div>
+            {this.props.children(this.state)}
+        </div>
     }
 }
 

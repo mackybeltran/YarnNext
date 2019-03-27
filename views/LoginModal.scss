@@ -31,12 +31,16 @@
     }
 
     >._close-btn {
-        width: 35px;
+        width: 45px;
         border: solid black;
         padding: 4px;
         align-self: flex-end;
         margin-right: 10px;
         cursor: pointer;
+    }
+
+    >._close-btn:hover {
+        background-color: red;
     }
 
     
