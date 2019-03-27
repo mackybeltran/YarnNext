@@ -23,37 +23,23 @@ class LoginModal extends PureComponent {
         this.setState({
             email: event.target.value
         })
-        console.log(this.state.email)
     }
 
     handleChangePassword(event){
         this.setState({
             pass: event.target.value
-        })
-        
+        })        
     }
 
     handleRegistration(){
-        console.log('login fired')
         const email = this.state.email;
         const pass = this.state.pass;
-        const callback = () => {
-            if (this.props.isAuthenticated) {
-                this.props.loginModalChange(false)
-            }
-        }
-        register(email, pass, callback)
-
-       
-   
+        register(email, pass, this.props.loginModalChange(false))  
     }
 
-    handleLogin(){
-        
-        console.log('login fired')
+    handleLogin(){        
         const email = this.state.email;
-        const pass = this.state.pass;
-     
+        const pass = this.state.pass; 
         signIn(email, pass, this.props.loginModalChange(false))
     }
 

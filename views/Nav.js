@@ -9,13 +9,11 @@ import  { signOut } from '../firebase/firebase.js'
 class Nav extends PureComponent {
     constructor(props){
         super(props);
-        this._handleLogout = this._handleLogout.bind(this);
-                
+        this._handleLogout = this._handleLogout.bind(this);                
     }
 
     _handleLogout(){
         signOut()
-
     }
 
     render(){

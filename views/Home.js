@@ -14,8 +14,7 @@ class Home extends PureComponent {
         this.signInModeChange = this.signInModeChange.bind(this);
         this.loginModalChange = this.loginModalChange.bind(this);
         this.createModeOn = this.createModeOn.bind(this);
-        this.newYarnModalChange = this.newYarnModalChange.bind(this);
-      
+        this.newYarnModalChange = this.newYarnModalChange.bind(this);      
         this.state = {
             signInMode: 'login',
             loginModalOn: false,
@@ -30,8 +29,7 @@ class Home extends PureComponent {
         })
     }
 
-    loginModalChange(mode){
-        
+    loginModalChange(mode){        
         this.setState({
             loginModalOn: mode
         })
@@ -108,7 +106,6 @@ class Home extends PureComponent {
             </main>
         </div>
     }
-
 }
 
 export default Home
