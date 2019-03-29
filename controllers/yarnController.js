@@ -16,9 +16,10 @@ export const addNewYarn = (user, title, file) => {
                     user: user,
                     cover: url
         })).then(result => {
-            addNewScene(1, result.id)
+            console.log('19', result)
+            addNewScene([{index: 1}, {yarnId: result.id}, {userId: user}])
         }).then(result => {
-            location.assign('myyarns')
+            location.assign('/myyarns')
         })
     })
 }

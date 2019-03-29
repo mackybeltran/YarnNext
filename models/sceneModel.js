@@ -1,9 +1,12 @@
 //belongs to yarns
+//belongs to users
 
 const scene = {
-    backgroundImg: 'string',
-    children: ['string'],
-    index: 'number',
-    name: 'string',
-    yarnId: 'string'
+    backgroundImg: '',
+    childOf: '',
+    index: 0,
+    name: '',
+    userId: '',
+    yarnId: ''
 }
+export default scene
