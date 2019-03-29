@@ -39,6 +39,7 @@ class Yarnlist extends Component {
 
    
     render(){
+        
         return <div className='Yarnlist'>
             <Nav 
                 isAuthenticated={this.props.appState.isAuthenticated}               
@@ -48,10 +49,8 @@ class Yarnlist extends Component {
         
                 return <Link 
                     key={index}
-                    href={`/edit?id=${yarn.id}`}>                
-                    <a 
-                        className='_yarn-card'
-                        href={`edit?id=${yarn.id}`}>
+                    href={this.props.allYarns ? '/' : `edit?id=${yarn.id}`}>                
+                    <a className='_yarn-card'>
                         <div className='_img-container'>
                             <img 
                                 src={yarn.data().cover}
