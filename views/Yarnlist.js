@@ -1,22 +1,23 @@
 import { Component } from 'react'
 import { loadFirebase, getUser } from '../firebase/firebase.js'
 import { getUsersYarns, getAllYarns } from '../controllers/yarnController'
-import Nav from './Nav.js'
+import Nav from './NavLogoutOnly.js'
 import './Yarnlist.scss'
+import Link from 'next/link'
 
 class Yarnlist extends Component {
     constructor(props){
         super(props);
-        this.signInModeChange = this.signInModeChange.bind(this);
-        this.loginModalChange = this.loginModalChange.bind(this);
+      
         this.state = {
             yarns: [],
-            signInMode: 'login',
-            loginModalOn: false
         }
     }
     componentDidUpdate(prevProps){    
-        
+        if (!(this.props.appState.isAuthenticated) && (!prevProps.appState.isAuthenticated)){
+            location.assign('/')
+        }
+
         if ((this.props.appState.isAuthenticated !== prevProps.appState.isAuthenticated) &&
         (this.props.allYarns === false)) {   
         getUsersYarns(this.props.appState.isAuthenticated)
@@ -36,40 +37,32 @@ class Yarnlist extends Component {
     }       
 }
 
-    signInModeChange(mode){
-        this.setState({
-            signInMode: mode
-        })
-    }
-
-    loginModalChange(mode){
-        
-        this.setState({
-            loginModalOn: mode
-        })
-    }
+   
     render(){
-       console.log(this.props.allYarns)
         return <div className='Yarnlist'>
             <Nav 
-                signInModeChange={this.signInModeChange}
-                isAuthenticated={this.props.appState.isAuthenticated}
-                loginModalChange={this.loginModalChange}
+                isAuthenticated={this.props.appState.isAuthenticated}               
             />
             <div className='_yarn-container'>
             {this.state.yarns.map((yarn, index) => {
-                  
-                return <div key={index} className='_yarn-card'>
-                    <div className='_img-container'>
-                      <img 
-                        src={yarn.data().cover}
-                        className='_yarn-cover w3-image'
-                        alt={yarn.data().title}/>
-                    </div>
-                    <div className='_title-container'>
-                        {yarn.data().title}
-                    </div>
-                </div>
+        
+                return <Link 
+                    key={index}
+                    href={`/edit?id=${yarn.id}`}>                
+                    <a 
+                        className='_yarn-card'
+                        href={`edit?id=${yarn.id}`}>
+                        <div className='_img-container'>
+                            <img 
+                                src={yarn.data().cover}
+                                className='_yarn-cover w3-image'
+                                alt={yarn.data().title}/>
+                        </div>
+                        <div className='_title-container'>
+                            {yarn.data().title}
+                        </div>
+                    </a>
+                </Link>
             })}
             </div>
         </div>

@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { addNewScene } from './sceneController.js'
 
 export const addNewYarn = (user, title, file) => {
     const storageRef = firebase.storage().ref().child(`/yarnImages/${user}/${title}/${file.name}`)
@@ -15,7 +16,9 @@ export const addNewYarn = (user, title, file) => {
                     user: user,
                     cover: url
         })).then(result => {
-            location.assign('/myyarns')
+            addNewScene(1, result.id)
+        }).then(result => {
+            location.assign('myyarns')
         })
     })
 }
