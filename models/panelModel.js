@@ -1,9 +1,10 @@
 //belongs to scenes
 
 const panel = {
-    img: 'string',
-    imgMode: 'string',
-    index: 'number',
-    sceneId: 'string',
-    text: 'string'
+    img: '',
+    imgMode: '',
+    index: 0,
+    sceneId: '',
+    text: ''
 }
+export default panel

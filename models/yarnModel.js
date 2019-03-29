@@ -1,7 +1,9 @@
 
 
 const yarn = {
-    cover: 'string',
-    title: 'string',
-    user: 'string'
+    cover: '',
+    title: '',
+    user: ''
 }
+
+export default yarn
