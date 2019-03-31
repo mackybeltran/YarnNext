@@ -1,23 +1,18 @@
 @import './App.scss';
 
 .Nav {
-    width: 100vw;
-    padding: 16px;
     border-bottom: solid black;
     display: flex;
     justify-content: space-between;
     z-index: 99;
     background-color: $theme-orange;
+    padding: 16px;
     font-family: 'Raleway';
 
-    >._logo-container {
-
-        
+    >._logo-container {       
         >._logo {
             height: 32px;
         }
-        
-
     }
     >._logo-container:hover {
         cursor: pointer
@@ -28,7 +23,6 @@
         display: flex;
         padding-top: 6px;
        
-
         >._signInSwitch {
             cursor: pointer;
             padding-left: 16px;

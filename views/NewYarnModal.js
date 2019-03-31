@@ -1,6 +1,6 @@
 import { Component, createRef } from 'react'
 import './NewYarnModal.scss'
-import { addNewYarn } from '../controllers/yarnController'
+import { createNewYarnAction } from '../controllers/yarnController.js'
 
 class NewYarnModal extends Component {
     constructor(props){
@@ -22,11 +22,13 @@ class NewYarnModal extends Component {
     handleNewYarnSubmit(event){
         event.preventDefault();
         const title = this.state.title
-        const cover = this.fileInput.current.files[0]
+        const file = this.fileInput.current.files[0]
         const user = this.props.isAuthenticated
 
-        addNewYarn(user, title, cover)
-        
+        createNewYarnAction(file, title, user)
+        .then(result => {
+            location.assign('/myyarns')
+        })
     }
 
 

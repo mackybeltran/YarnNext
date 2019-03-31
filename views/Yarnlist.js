@@ -1,8 +1,8 @@
-import { Component } from 'react'
-import { loadFirebase, getUser } from '../firebase/firebase.js'
-import { getUsersYarns, getAllYarns } from '../controllers/yarnController'
-import Nav from './NavLogoutOnly.js'
 import './Yarnlist.scss'
+import { Component } from 'react'
+import { loadFirebase, getUser } from '../models/userModel.js';
+import { readUsersYarnsAction, readAllYarnsAction} from '../controllers/yarnController'
+import Nav from './NavLogoutOnly.js'
 import Link from 'next/link'
 
 class Yarnlist extends Component {
@@ -20,7 +20,7 @@ class Yarnlist extends Component {
 
         if ((this.props.appState.isAuthenticated !== prevProps.appState.isAuthenticated) &&
         (this.props.allYarns === false)) {   
-        getUsersYarns(this.props.appState.isAuthenticated)
+        readUsersYarnsAction(this.props.appState.isAuthenticated)
         .then(data => {
             this.setState({
                 yarns: data
@@ -28,7 +28,7 @@ class Yarnlist extends Component {
         })
     }   if ((this.props.appState.isAuthenticated !== prevProps.appState.isAuthenticated) &&
         (this.props.allYarns === true)) {
-        getAllYarns(this.props.appState.isAuthenticated)
+        readAllYarnsAction()
         .then(data => {
             this.setState({
                 yarns: data

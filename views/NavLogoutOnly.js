@@ -3,7 +3,7 @@ import './Nav.scss';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 const logo = 'https://firebasestorage.googleapis.com/v0/b/yarn-3c8e6.appspot.com/o/logo%2Fyarnlogo.png?alt=media&token=6e974dca-657d-4f5a-a7f6-59acea6f464e'
-import  { signOut } from '../firebase/firebase.js'
+import  { signOut } from '../models/userModel.js';
 
 
 class Nav extends PureComponent {
