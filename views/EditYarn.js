@@ -10,6 +10,12 @@ class EditYarn extends Component {
         }
     }
 
+    componentDidUpdate(prevProps){    
+        if (!(this.props.appState.isAuthenticated) && (!prevProps.appState.isAuthenticated)){
+            location.assign('/')
+        }
+    }
+
     render(){
         return <div className='EditYarn'>
             <Nav 

@@ -1,5 +1,6 @@
-import firebase from 'firebase'
-import  scene  from '../models/sceneModel.js'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import { createNewScene } from '../models/sceneModel.js';
 
 export const addNewScene = (array) => {
     return firebase.firestore().collection('scenes').add(
@@ -16,4 +17,8 @@ export const addNewScene = (array) => {
 
 export const getAllScenes = (yarnId) => {
     return firebase.firestore().collection('scenes').where('yarnId', '==', yarnId).get()
+}
+
+export const createFirstSceneAction = (userId, yarnId) => {
+    return createNewScene('', null, 1, userId, yarnId)
 }

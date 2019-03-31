@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import './LoginModal.scss';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { signIn, register } from '../firebase/firebase.js'
+import { signIn, register } from '../models/userModel.js';
 
 
 class LoginModal extends PureComponent {

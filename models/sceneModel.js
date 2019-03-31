@@ -1,12 +1,15 @@
 //belongs to yarns
 //belongs to users
 
-const scene = {
-    backgroundImg: '',
-    childOf: '',
-    index: 0,
-    name: '',
-    userId: '',
-    yarnId: ''
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
+export const createNewScene = (backgroundImg, childOf, index, userId, yarnId) => {
+    return firebase.firestore().collection('scenes').add({
+        backgroundImg: backgroundImg,
+        childOf: childOf,
+        index: index,
+        userId: userId,
+        yarnId, yarnId
+    })
 }
-export default scene

@@ -1,41 +1,24 @@
-import firebase from 'firebase';
-import { addNewScene } from './sceneController.js'
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import { addNewScene } from './sceneController.js';
+import { createNewYarn, addCoverToYarn, readFromCollection, readAllCollection } from '../models/yarnModel.js';
+import { createFirstSceneAction } from '../controllers/sceneController.js';
 
-export const addNewYarn = (user, title, file) => {
-    const storageRef = firebase.storage().ref().child(`/yarnImages/${user}/${title}/${file.name}`)
-    storageRef.put(file).on('state_changed',
-        snapshot => {
-            console.log((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-        }, (error) => {
-            console.log(error)
-        },() => {
-            return storageRef.getDownloadURL()
-                .then(url =>            
-                firebase.firestore().collection('yarns').add({
-                    title: title,
-                    user: user,
-                    cover: url
-        })).then(result => {
-            console.log('19', result)
-            addNewScene([{index: 1}, {yarnId: result.id}, {userId: user}])
-        }).then(result => {
-            location.assign('/myyarns')
-        })
+export const createNewYarnAction = (file, title, user) => {
+    return addCoverToYarn(file, title, user)
+    .then(url => {
+        return createNewYarn(url, title, user)
+        
+    }).then(result => {
+        createFirstSceneAction(user, result.id)
     })
 }
 
-export const getUsersYarns = (user) => {
-    return firebase.firestore().collection('yarns').where('user', '==', user).get()
-    .then((snapshot) => {
-        return snapshot.docs
-    })    
+export const readUsersYarnsAction = (user) => {
+    return readFromCollection('yarns', 'userId', user) 
 }
 
-export const getAllYarns = () => {
-    return firebase.firestore().collection('yarns').get()
-    .then((snapshot) => {
-        console.log(snapshot)
-        return snapshot.docs
-    })
+export const readAllYarnsAction = () => {
+    return readAllCollection('yarns')
 }
 

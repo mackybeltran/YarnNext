@@ -1,9 +1,9 @@
+import './App.scss';
 import { Component } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { loadFirebase } from '../models/userModel.js';
 
-import firebase from 'firebase';
-import 'firebase/auth'
-import { loadFirebase } from '../firebase/firebase.js'
-import './App.scss'
 
 
 class App extends Component {
