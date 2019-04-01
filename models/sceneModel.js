@@ -13,3 +13,7 @@ export const createNewScene = (backgroundImg, childOf, index, userId, yarnId) =>
         yarnId, yarnId
     })
 }
+
+export const readAllScenes = (yarnId) => {
+    return firebase.firestore().collection('scenes').where('yarnId', '==', yarnId).get()
+}

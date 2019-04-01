@@ -31,3 +31,17 @@ export const readAllCollection = (collection) => {
         return snapshot.docs
     })
 }
+
+export const readUserIdFromYarn = async (yarnId) => {
+    const response = await firebase.firestore().collection('yarns').doc(`${yarnId}`).get()
+    // console.log('37', response.data().userId)
+    return response.data().userId
+    // return firebase.firestore().collection('yarns').doc(`${yarnId}`).get()
+    // .then(snapshot => {
+    //     if (snapshot.exists){
+    //         return snapshot.data().userId
+    //     }else {
+    //         consosle.log('document doesnt exist')
+    //     }
+    // })
+}

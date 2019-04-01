@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { addNewScene } from './sceneController.js';
-import { createNewYarn, addCoverToYarn, readFromCollection, readAllCollection } from '../models/yarnModel.js';
+import { createNewYarn, addCoverToYarn, readFromCollection, readAllCollection, readUserIdFromYarn } from '../models/yarnModel.js';
 import { createFirstSceneAction } from '../controllers/sceneController.js';
 
 export const createNewYarnAction = (file, title, user) => {
@@ -22,3 +22,13 @@ export const readAllYarnsAction = () => {
     return readAllCollection('yarns')
 }
 
+export const compareUserIdFromYarnToAuthId = async (yarnId, userId) => {
+    const response = await readUserIdFromYarn(yarnId)
+    if (userId === null){
+        return null
+    } if (`${response}` === `${userId}`){
+        return true
+    } else {
+        return false        
+    }
+}

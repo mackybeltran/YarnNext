@@ -9,7 +9,7 @@ export function loadFirebase(){
     if (!firebase.apps.length) {
       firebase.initializeApp(config);
     }
-    return firebase.apps
+    return firebase
 }
 
 export function signOut(){
