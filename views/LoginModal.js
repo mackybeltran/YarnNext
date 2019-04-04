@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
 import './LoginModal.scss';
+import React, { PureComponent } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { signIn, register } from '../models/userModel.js';

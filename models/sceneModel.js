@@ -4,16 +4,22 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-export const createNewScene = (backgroundImg, childOf, index, userId, yarnId) => {
+export const createNewScene = (backgroundImg, children, index, userId, yarnId, title) => {
     return firebase.firestore().collection('scenes').add({
         backgroundImg: backgroundImg,
-        childOf: childOf,
+        children: children,
         index: index,
         userId: userId,
-        yarnId, yarnId
+        yarnId, yarnId,
+        title, title
     })
 }
 
 export const readAllScenes = (yarnId) => {
-    return firebase.firestore().collection('scenes').where('yarnId', '==', yarnId).get()
+    
+    return firebase.firestore().collection('scenes').where('yarnId', '==', `${yarnId}`).get()
+    .then(snapshot => {
+        return snapshot.docs
+        }
+    ) 
 }
