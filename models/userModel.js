@@ -4,7 +4,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 
 
-export function loadFirebase(){
+export const loadFirebase = () => {
   
     if (!firebase.apps.length) {
       firebase.initializeApp(config);
@@ -12,7 +12,7 @@ export function loadFirebase(){
     return firebase
 }
 
-export function signOut(){
+export const signOut = () => {
     firebase.auth().signOut();
     return firebase
 }
