@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import Nav from './NavLogoutOnly'
-import './EditYarn.scss'
+import Nav from './NavLogoutOnly';
+import YarnChart from './YarnChart.js';
+import './EditYarn.scss';
 
 class EditYarn extends Component {
     constructor(props){
@@ -21,6 +22,9 @@ class EditYarn extends Component {
             <Nav 
                 isAuthenticated={this.props.appState.isAuthenticated}               
             />
+            <YarnChart 
+                appState={this.props.appState}
+                yarnId={this.props.yarnId}/>
             </div>
     }
 }

@@ -1,5 +1,5 @@
-import { Component, createRef } from 'react'
 import './NewYarnModal.scss'
+import { Component, createRef } from 'react'
 import { createNewYarnAction } from '../controllers/yarnController.js'
 
 class NewYarnModal extends Component {

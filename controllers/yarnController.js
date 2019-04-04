@@ -7,7 +7,7 @@ import { createFirstSceneAction } from '../controllers/sceneController.js';
 export const createNewYarnAction = (file, title, user) => {
     return addCoverToYarn(file, title, user)
     .then(url => {
-        return createNewYarn(url, title, user)
+        return createNewYarn(file, url, title, user)
         
     }).then(result => {
         createFirstSceneAction(user, result.id)
@@ -24,9 +24,7 @@ export const readAllYarnsAction = () => {
 
 export const compareUserIdFromYarnToAuthId = async (yarnId, userId) => {
     const response = await readUserIdFromYarn(yarnId)
-    if (userId === null){
-        return null
-    } if (`${response}` === `${userId}`){
+     if (`${response}` === `${userId}`){
         return true
     } else {
         return false        

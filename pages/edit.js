@@ -19,7 +19,9 @@ class Edit extends Component {
                     </div>
                 break
                 case true:             
-                    edit = <EditYarn appState={appState}/>
+                    edit = <EditYarn 
+                        appState={appState}
+                        yarnId={this.props.router.query.id}/>
                 break
                 case false:
                     edit = <div>
