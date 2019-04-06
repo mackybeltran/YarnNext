@@ -24,7 +24,9 @@ export const createOrgChartPropAction = (yarnId) => {
                 userId: firstScene.userId,
                 yarnId: firstScene.yarnId,
                 backgroundImg: firstScene.backgroundImg,
-                canDrag: false
+                canDrag: false,
+                droppable: false
+                
             }]
         } return {
             treeData: [{
@@ -35,7 +37,9 @@ export const createOrgChartPropAction = (yarnId) => {
                 yarnId: firstScene.yarnId,
                 backgroundImg: firstScene.backgroundImg,
                 children: assignOrgChartHelper(scenes, firstScene, firstScene.children),
-                canDrag: false
+                canDrag: false,
+                droppable: false
+                
 
             }],
             scenes: scenes

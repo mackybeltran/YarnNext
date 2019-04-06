@@ -10,7 +10,7 @@ class EditYarn extends Component {
         this.handleTreeData = this.handleTreeData.bind(this)
         this.state = {
             scenes: [],
-            treeData: [{loading: 'loading'}]
+            treeData: []
         }
     }
 

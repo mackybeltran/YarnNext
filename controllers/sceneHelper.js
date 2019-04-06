@@ -45,6 +45,7 @@ export const assignOrgChartHelper = (scenes, scene, childrenIndex) => {
                 userId: child.userId,
                 yarnId: child.yarnId,
                 backgroundImg: child.backgroundImg,
+                droppable: true,
                 children: assignOrgChartHelper(scenes, child, child.children)
             });
         } else {
@@ -54,6 +55,7 @@ export const assignOrgChartHelper = (scenes, scene, childrenIndex) => {
                 userId: child.userId,
                 yarnId: child.yarnId,
                 backgroundImg: child.backgroundImg,
+                droppable: true,
                 expanded: true
             })
         }
