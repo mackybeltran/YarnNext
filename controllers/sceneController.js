@@ -13,15 +13,32 @@ export const createOrgChartPropAction = (yarnId) => {
     .then(result => {
         const scenes = result
         const firstScene = getFirstSceneHelper(scenes)
+        let title
+        firstScene.title ? title = firstScene.title : title = `Scene # ${firstScene.index}`
         if (firstScene.children === []){
-            return {
+            
+            return [{
+                title: title,
+                expanded: true,
                 index: firstScene.index,
-                title: firstScene.title
-            }
+                userId: firstScene.userId,
+                yarnId: firstScene.yarnId,
+                backgroundImg: firstScene.backgroundImg,
+                canDrag: false
+            }]
         } return {
-            index: firstScene.index,
-            title: firstScene.title,
-            children: assignOrgChartHelper(scenes, firstScene, firstScene.children)
+            treeData: [{
+                title: title,
+                expanded: true,
+                index: firstScene.index,
+                userId: firstScene.userId,
+                yarnId: firstScene.yarnId,
+                backgroundImg: firstScene.backgroundImg,
+                children: assignOrgChartHelper(scenes, firstScene, firstScene.children),
+                canDrag: false
+
+            }],
+            scenes: scenes
         }
     });
 };

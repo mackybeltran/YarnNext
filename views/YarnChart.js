@@ -1,37 +1,33 @@
-import './YarnChart.scss'
-import OrgChart from 'react-orgchart';
+import './YarnChart.scss';
+import './React-Sortable-Tree.scss';
 import { Component } from 'react';
-import { readFromCollection } from '../models/yarnModel.js'
-import { createOrgChartPropAction } from '../controllers/sceneController.js'
+import SortableTree from 'react-sortable-tree';
+import { getTreeFromFlatData, getFlatDataFromTree } from 'react-sortable-tree'
 
-const MyNodeComponent = ({node}) => {
-    return (
-        <div className="initechNode" onClick={() => console.log("Click fired for : " + node.index)}>{ node.index }</div>
-    );
-};
+
+
 
 class YarnChart extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            orgChartObject: {}
-        }
+
+    componentDidUpdate(prevProps){
+        console.log(this.props)
+       console.log(prevProps)
+
+       if (this.props !== prevProps){
+           console.log(this.props.treeData)
+       }
     }
 
-    componentDidMount(){
-        createOrgChartPropAction(this.props.yarnId)
-        .then(result => {
-            this.setState({
-                orgChartObject: result
-            })
-        })
-    }
     render(){
-        console.log(this.state.orgChartObject)
+        console.log(this.props)
         
         return <div className='YarnChart'>
+            <SortableTree treeData={this.props.treeData} 
+                onChange={treeData => this.props.handleTreeData(treeData)}
+                />
+         
         </div>
-    }
-}
+    };
+};
 
 export default YarnChart

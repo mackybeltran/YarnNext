@@ -35,19 +35,60 @@ export const assignOrgChartHelper = (scenes, scene, childrenIndex) => {
 
     let childrenObjects = [];
     getChildrenHelper(scenes, scene.children).forEach(child => {
-        console.log('38', child.children)       
+        let title
+        child.title ? title = child.title : title = `Scene # ${child.index}`     
         if (child.children) {            
             childrenObjects.push({
+                title: title,
                 index: child.index,
-                title: child.title,
+                expanded: true,
+                userId: child.userId,
+                yarnId: child.yarnId,
+                backgroundImg: child.backgroundImg,
                 children: assignOrgChartHelper(scenes, child, child.children)
             });
         } else {
-            console.log('40')
             childrenObjects.push({
+                title: title,
                 index: child.index,
-                title: child.title
+                userId: child.userId,
+                yarnId: child.yarnId,
+                backgroundImg: child.backgroundImg,
+                expanded: true
             })
         }
     }); return childrenObjects
+};
+
+export const getChildrenFromTreeObjectHelper = (childrenArray) => {
+    let result = []
+    childrenArray.forEach(childObject => {
+        result.push(childObject,index)
+    }); return result
+};
+//for flattening data to save to database
+export const flattenTreeObjectHelper = (tree) => {
+    let result = []
+    tree.forEach(treeObject => {
+        if (treeObject.children){
+            let childrenArray = []            
+            result.push({
+                backgroundImg: treeObject.backgroundImg,
+                index: treeObject.index,
+                title: treeObject.title,
+                userId: treeObject.userId,
+                yarnId: treeObject.yarnId,
+                children: getChildrenFromTreeObjectHelper(treeObject.children)
+            }); flattenTreeObjectHelper(treeObject.children)
+        } else {
+            let childrenArray = []            
+            result.push({
+                backgroundImg: treeObject.backgroundImg,
+                index: treeObject.index,
+                title: treeObject.title,
+                userId: treeObject.userId,
+                yarnId: treeObject.yarnId
+            });
+        };
+    }); return result
 };
