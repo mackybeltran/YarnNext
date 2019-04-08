@@ -5,14 +5,13 @@
   "main": "index.js",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
-    "d3": "^5.9.2",
     "dotenv": "^7.0.0",
     "firebase": "^5.9.1",
     "next": "^8.0.3",
     "node-sass": "^4.11.0",
     "react": "^16.8.5",
-    "react-d3-tree": "^1.12.3",
     "react-dom": "^16.8.5",
+    "react-icons": "^3.5.0",
     "react-sortable-tree": "^2.6.2",
     "sass-loader": "^7.1.0"
   },
@@ -24,5 +23,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": "github:mackybeltran/YarnNext"
 }

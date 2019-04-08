@@ -11,7 +11,10 @@ export const createFirstSceneAction = (userId, yarnId) => {
 export const createOrgChartPropAction = (yarnId) => {
     return readAllSceneDataHelper(yarnId)       
     .then(result => {
-        const scenes = result
+        
+        const scenes = result.map(resultObject => {
+            return resultObject.data()
+        });
         const firstScene = getFirstSceneHelper(scenes)
         let title
         firstScene.title ? title = firstScene.title : title = `Scene # ${firstScene.index}`
@@ -42,7 +45,7 @@ export const createOrgChartPropAction = (yarnId) => {
                 
 
             }],
-            scenes: scenes
+            scenes: result
         }
     });
 };

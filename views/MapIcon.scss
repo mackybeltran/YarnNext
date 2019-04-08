@@ -1,0 +1,39 @@
+@import './App.scss';
+
+.MapIcon {
+    background: #d9d9d9
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M616 320h-48v-48c0-22.056-17.944-40-40-40H344v-40h48c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24H248c-13.255 0-24 10.745-24 24v144c0 13.255 10.745 24 24 24h48v40H112c-22.056 0-40 17.944-40 40v48H24c-13.255 0-24 10.745-24 24v144c0 13.255 10.745 24 24 24h144c13.255 0 24-10.745 24-24V344c0-13.255-10.745-24-24-24h-48v-40h176v40h-48c-13.255 0-24 10.745-24 24v144c0 13.255 10.745 24 24 24h144c13.255 0 24-10.745 24-24V344c0-13.255-10.745-24-24-24h-48v-40h176v40h-48c-13.255 0-24 10.745-24 24v144c0 13.255 10.745 24 24 24h144c13.255 0 24-10.745 24-24V344c0-13.255-10.745-24-24-24z"/></svg>')
+      no-repeat center;
+      height: 48px;
+      width: 48px;
+      position: absolute;
+      background-size: 80%;
+      right: 64px;
+      top: 16px;
+      background-color: white;
+      box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+      border:1px solid #CCC;
+      border-radius: 2px;
+      animation: chartOff 0.75s;
+      cursor: pointer;
+
+}
+
+.MapIcon:hover {
+    background-color: $theme-orange;
+}
+
+@keyframes chartOff {
+    25% {
+        background-color: $theme-orange;
+    }
+    50% {
+        background-color: white;
+    }
+    75% {
+        background-color: $theme-orange;
+    }
+    100% {
+        background-color: white;
+    }
+}

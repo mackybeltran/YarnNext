@@ -5,7 +5,7 @@ export const readAllSceneDataHelper = (yarnId) => {
     return readFromCollection('scenes', 'yarnId', yarnId)
         .then(snapshot => {
             snapshot.map(scene => {
-                array.push(scene.data())
+                array.push(scene)
             });
         return array
     });   
@@ -19,7 +19,7 @@ export const getFirstSceneHelper = (scenes) => {
 
 export const getChildrenHelper = (scenes, childrenIndex) => {
     const childrenArray = [];
-    const pushChildrenAction = (scenes, childrenIndex) => {  
+    const pushChildrenHelper = (scenes, childrenIndex) => {  
         childrenIndex.forEach(childIndex => {
             scenes.forEach(scene => {
                 if (scene.index === childIndex){
@@ -27,7 +27,7 @@ export const getChildrenHelper = (scenes, childrenIndex) => {
                 };
             });
         }); 
-    };  pushChildrenAction(scenes, childrenIndex)
+    };  pushChildrenHelper(scenes, childrenIndex)
         return childrenArray
 };
 
@@ -65,7 +65,7 @@ export const assignOrgChartHelper = (scenes, scene, childrenIndex) => {
 export const getChildrenFromTreeObjectHelper = (childrenArray) => {
     let result = []
     childrenArray.forEach(childObject => {
-        result.push(childObject,index)
+        result.push(childObject.index)
     }); return result
 };
 //for flattening data to save to database
@@ -93,4 +93,12 @@ export const flattenTreeObjectHelper = (tree) => {
             });
         };
     }); return result
+};
+
+export const getSceneIdHelper = (scenes, index) => {
+    
+    const result = scenes.filter(filteredScenes => 
+        filteredScenes.data().index === index
+    );
+    return result[0].id
 };
