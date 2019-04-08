@@ -2,6 +2,8 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
 
+//belongs to users
+
 
 export const createNewYarn = (file, url, title, user) => {         
     return firebase.firestore().collection('yarns').add({
@@ -21,7 +23,6 @@ export const addCoverToYarn = (file, title, user) => {
 }
 
 export const readFromCollection = (collection, key, value) => {
-    console.log(collection, key, value)
     return firebase.firestore().collection(`${collection}`).where(`${key}`, '==', value).get()
     .then(snapshot => {
         return snapshot.docs

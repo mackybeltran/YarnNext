@@ -11,7 +11,8 @@
     "node-sass": "^4.11.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-orgchart": "^1.0.5",
+    "react-icons": "^3.5.0",
+    "react-sortable-tree": "^2.6.2",
     "sass-loader": "^7.1.0"
   },
   "devDependencies": {},
@@ -22,5 +23,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": "github:mackybeltran/YarnNext"
 }

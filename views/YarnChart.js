@@ -1,37 +1,63 @@
-import './YarnChart.scss'
-import OrgChart from 'react-orgchart';
+import './YarnChart.scss';
+import './React-Sortable-Tree.scss';
 import { Component } from 'react';
-import { readFromCollection } from '../models/yarnModel.js'
-import { createOrgChartPropAction } from '../controllers/sceneController.js'
+import SortableTree from 'react-sortable-tree';
+import { getTreeFromFlatData, getFlatDataFromTree, walk } from 'react-sortable-tree';
+import { FaArrowAltCircleRight } from 'react-icons/fa';
 
-const MyNodeComponent = ({node}) => {
-    return (
-        <div className="initechNode" onClick={() => console.log("Click fired for : " + node.index)}>{ node.index }</div>
-    );
-};
+
 
 class YarnChart extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            orgChartObject: {}
-        }
+        this.handleButton = this.handleButton.bind(this);
     }
 
-    componentDidMount(){
-        createOrgChartPropAction(this.props.yarnId)
-        .then(result => {
-            this.setState({
-                orgChartObject: result
-            })
-        })
+    componentDidUpdate(prevProps){
+ 
+       if (this.props !== prevProps){
+           
+           this.props.chartOn
+       }
     }
+
+    handleButton(rowInfo){
+        this.props.handleChartOn()
+    }
+
     render(){
-        console.log(this.state.orgChartObject)
+
+        // const alertNodeInfo = ({ node, path, treeIndex }) => {
+        //     const objectString = Object.keys(node)
+        //       .map(k => (k === 'children' ? 'children: Array' : `${k}: '${node[k]}'`))
+        //       .join(',\n   ');
+        //       global.alert(
+        //         'Info passed to the icon and button generators:\n\n' +
+        //           `node: {\n   ${objectString}\n},\n` +
+        //           `path: [${path.join(', ')}],\n` +
+        //           `treeIndex: ${treeIndex}`
+        //       );
+        //     };
         
-        return <div className='YarnChart'>
+        return <div className={this.props.chartOn ? 'YarnChart' : 'none'}>
+            <div className='_tree'>
+                <SortableTree treeData={this.props.treeData} 
+                    onChange={treeData => this.props.handleTreeData(treeData)}
+                    generateNodeProps={rowInfo => ({
+                        buttons: [
+                        <button onClick={() => this.handleButton(rowInfo)}>
+                            <div className='_right-arrow-icon'>
+                                <FaArrowAltCircleRight />
+                            </div>
+                        </button>
+                        ],
+                    })}
+                    canDrop={({ nextParent }) => !(nextParent === null) }
+                    className='_chart'
+                    />
+            </div>
         </div>
-    }
-}
+    };
+};
 
 export default YarnChart

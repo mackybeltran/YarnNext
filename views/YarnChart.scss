@@ -1,3 +1,48 @@
 .YarnChart {
-    box-sizing: border-box;
+    height: 480px;
+    width: 600px;
+    padding-top: 32px;
+    background-color: white;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    border:1px solid #CCC;
+    border-radius: 2px;
+    margin: 32px;
+    overflow: hidden;
+    position: relative;
+
+    >._tree {
+        font-family: 'Raleway';
+        padding-top: 32px;
+        width: 620px;
+        min-width: 100vw;
+        overflow: scroll;
+        height: 100%;
+
+        >._chart {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .YarnChart {
+        width: 90vw;
+
+        >._tree {
+            width: 100vw;
+        }
+    }
+}
+
+._right-arrow-icon {
+    padding-top: 2px;
+}
+
+._right-arrow-icon:hover {
+    cursor: pointer;
+}
+
+.none {
+    display: none;
 }
